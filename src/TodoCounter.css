@@ -1,0 +1,153 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  padding: 80px 40px 40px;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 12px;
+  box-shadow: 1px 1px 12px -1px #eaeaea;
+}
+
+h1{
+  font-size: 33px;
+  color: rgb(78, 78, 78);
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px dotted rgb(236, 236, 236);
+}
+
+h1 span{
+  color:red;
+  font-size: 2.5rem;
+}
+
+input{
+  width: 100%;
+  font-size: 1.3rem;
+  padding: .7rem;
+  border-radius: 7px;
+  margin-bottom: 4rem;
+  border: 2px solid rgb(243, 243, 243);
+  box-sizing: border-box;
+}
+
+input:focus{
+  outline: none;
+  border-color: rgb(232, 232, 232);
+}
+
+input::placeholder{
+  color: #eaeaea;
+}
+
+#root ul{
+  list-style: none;
+  margin-bottom: 5rem;
+  width: 100%;
+}
+
+.TodoItem{
+  margin-bottom: .5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 5px;
+  transition: .3s ease all;;
+}
+
+.TodoItem:hover{
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+.TodoItem span:first-child{
+  margin-right: 1rem;
+}
+
+.TodoItem-p{
+  margin-right: 1rem;
+}
+
+.TodoItem-p__complete{
+  text-decoration: line-through;
+}
+
+.TodoItem .Icon-delete{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #995e9f;
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  width:30px;
+  height: 30px;
+  font-size: .9rem;
+  transition: .1s ease all;
+}
+
+.TodoItem span:last-child:hover{
+  background-color:red;
+}
+
+.Icon{
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  font-size: 24px;  
+}
+
+.Icon-check__active{
+  color:rgb(36, 255, 36);
+}
+
+#root button{
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight:bolder;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  float:right;
+  background-color: rgb(150, 224, 237);
+  color: white;
+  font-size: 77px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:3px dotted rgb(255, 255, 255);
+  box-shadow: 0px 0px 7px 3px #6360aa61;
+  cursor: pointer;
+  transform:rotate(0);
+  transition: .3s ease all;
+}
+
+#root button:hover{
+  transform:rotate(224deg);
+  background-color: rgb(112, 223, 243);
+  color: white;
+}
