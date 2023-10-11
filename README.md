@@ -86,3 +86,76 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### por que hacer estado
 con el estado react sabe que tiene que volver a actualizar la variable
 
+
+### COMPLETANDO
+
+1. Los metodos de cada componente se encuentran fuera de los componentes hijos.
+2. No se manipula directamente el estado sino que se modifica una copia.
+3. Esta copia luego de manipulada se pasa por la funcion seteadora del estado.
+4. Utiliza findIndex para devolver el index del elementoque haga match.
+
+
+```js
+  const defaultTodos = [
+    {text:'Cortar Cebolla', completed:false},
+    {text:'Empezar curso', completed:false},
+    {text:'comprar pan', completed:false},
+    {text:'preparar arroz', completed:false},
+    {text:'comprar pescado', completed:true},
+  ]
+
+  function App() {
+    const [searchValue, setSearchValue] = useState('')
+    const [completed, setCompleted] = useState(0)
+    const [todos, setTodos] = useState(defaultTodos)
+
+
+    const completeTodos = () => todos.filter(todo => !!todo.completed).length
+    const completedTotal = () => todos.length
+
+    const textSearch = todos.filter(todos => 
+      todos.text.toLowerCase().includes(searchValue.toLocaleLowerCase())
+    )
+
+    const completeTodo = (text) => {
+      const newTodos = [...todos]
+      const indexTodo = newTodos.findIndex(todo => todo.text === text)
+      newTodos[indexTodo].completed=true
+      setTodos(newTodos)
+    }
+
+    const deleteTodo = (text) => {
+      const newTodos = [...todos]
+      const index = newTodos.findIndex(todo => todo.text === text)
+      newTodos.splice(index,1)
+      setTodos(newTodos)
+    }
+
+    return (
+      <>
+        <TodoCounter total={completedTotal()} completed={completeTodos()}/>
+        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+        <TodoList>
+          {
+            textSearch.map(
+              ({ text, completed }) => 
+                <TodoItem 
+                  key={text} 
+                  text={text} 
+                  onComplete={() => completeTodo(text)} 
+                  onDelete={() => deleteTodo(text)} 
+                  completed={completed}
+                />
+            )
+          }
+        </TodoList>
+        <CreateTodoButton/>
+      </>
+    );
+  }
+
+  export default App;
+
+
+```
+
